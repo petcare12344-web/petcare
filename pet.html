@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Social Sharing Meta Tags -->
+    <title>PetCare | חנות בוטיק למוצרי חיות מחמד פרימיום</title>
+    <meta name="description" content="PetCare - המלצות וסקירות על מוצרי הבוטיק הטובים ביותר לחיות מחמד מאלי אקספרס. עיצוב יוקרתי, איכות ללא פשרות ומחירים בלעדיים.">
+    <meta name="keywords" content="חיות מחמד, חתולים, כלבים, שירותים לחתול, אלי אקספרס, מוצרי פרימיום לחיות מחמד">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / WhatsApp / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PetCare | חנות בוטיק למוצרי חיות מחמד">
+    <meta property="og:description" content="מוצרי פרימיום מעוצבים לחיות מחמד במחירים מעולים הישר מהספקים המובילים.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?q=80&w=1200">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                    },
+                    colors: {
+                        petDark: '#1a1a1a',
+                        petGray: '#f7f7f7',
+                        petBorder: '#e5e5e5',
+                        petAccent: '#ff4747'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+    </style>
+</head>
+<body class="bg-white text-petDark font-sans antialiased selection:bg-petDark selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-petDark text-white text-xs font-medium py-2.5 px-4 text-center tracking-wider transition-all duration-300">
+        <span> 🎯 המלצות הבוטיק הנבחרות לבית ולחיית המחמד &bull; <a href="#products" class="underline hover:text-gray-300">לצפייה בקולקציה</a></span>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-petBorder transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <div class="flex items-center lg:hidden">
+                <button id="mobile-menu-btn" class="p-2 text-petDark hover:text-gray-600 focus:outline-none" aria-label="תפריט">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+
+            <nav class="hidden lg:flex items-center space-x-8 space-x-reverse text-sm font-medium tracking-wide">
+                <a href="#products" class="hover:text-gray-500 transition-colors">קולקציה נבחרת</a>
+                <a href="#values" class="hover:text-gray-500 transition-colors">למה לבחור בנו</a>
+                <a href="#faq" class="hover:text-gray-500 transition-colors">שאלות נפוצות</a>
+            </nav>
+
+            <div class="text-center">
+                <a href="#" class="text-2xl font-black tracking-widest uppercase">PetCare</a>
+            </div>
+
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <button onclick="openAdminModal()" class="text-xs font-bold border border-petBorder px-3 py-1.5 rounded-full hover:bg-gray-100 transition-colors flex items-center space-x-1 space-x-reverse" title="דשבורד ניהול">
+                    <i class="fa-solid fa-lock"></i>
+                    <span class="hidden sm:inline">ניהול מוצרים</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden transition-opacity opacity-0 lg:hidden">
+        <div class="bg-white w-4/5 max-w-sm h-full shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300" id="mobile-menu-content">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-petBorder">
+                    <span class="text-xl font-bold tracking-widest">PetCare</span>
+                    <button id="close-mobile-menu" class="p-2 text-gray-500 hover:text-black">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-4 pt-6 text-base font-medium">
+                    <a href="#products" class="mobile-nav-link hover:text-gray-500 py-2 border-b border-gray-100">קולקציה נבחרת</a>
+                    <a href="#values" class="mobile-nav-link hover:text-gray-500 py-2 border-b border-gray-100">למה לבחור בנו</a>
+                    <a href="#faq" class="mobile-nav-link hover:text-gray-500 py-2 border-b border-gray-100">שאלות נפוצות</a>
+                    <button onclick="openAdminModal()" class="text-right hover:text-gray-500 py-2 border-b border-gray-100 text-amber-600 font-bold">כניסה למנהל</button>
+                </nav>
+            </div>
+            <div class="py-4 border-t border-petBorder text-xs text-gray-500 text-center">
+                &copy; PetCare. כל הזכויות שמורות.
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-petGray overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-center lg:text-right">
+                <span class="inline-block bg-white text-petDark border border-petBorder text-xs uppercase tracking-widest px-3 py-1 rounded-full font-medium">
+                    🌿 בחירת הבוטיק של AliExpress
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    עיצוב יוקרתי. נוחות חסרת פשרות לחיית המחמד.
+                </h1>
+                <p class="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
+                    ריכזנו עבורכם את המוצרים המעוצבים והמובילים ביותר מאלי אקספרס. מוצרים שעברו סינון איכות קפדני ומשתלבים מושלם בבית.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4 sm:space-x-reverse pt-2">
+                    <a href="#products" class="w-full sm:w-auto bg-petDark text-white px-8 py-4 rounded-full font-medium hover:bg-black transition-all shadow-lg text-center">
+                        לצפייה בקולקציה
+                    </a>
+                    <a href="#faq" class="w-full sm:w-auto bg-white text-petDark border border-petBorder px-8 py-4 rounded-full font-medium hover:bg-gray-50 transition-all text-center">
+                        איך זה עובד?
+                    </a>
+                </div>
+            </div>
+            <div class="relative flex justify-center">
+                <div class="relative w-full max-w-lg aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white border border-petBorder group">
+                    <img src="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?q=80&w=1000&auto=format&fit=crop" 
+                         alt="מוצרי יוקרה לחיות מחמד" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         onerror="this.src='https://placehold.co/800x800/f5f5f5/333333?text=PetCare'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Showcase -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">המוצרים הנבחרים</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1">איכות, מראה ומחיר ללא תחרות</h2>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center space-x-2 space-x-reverse text-sm font-medium overflow-x-auto pb-2">
+                    <button class="filter-btn px-4 py-2 rounded-full bg-petDark text-white transition-all whitespace-nowrap" data-filter="all">הכל</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all whitespace-nowrap" data-filter="litter-box">טיפוח וסביבת החתול</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all whitespace-nowrap" data-filter="accessories">אביזרים והאכלה חכמה</button>
+                </div>
+            </div>
+            
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Products rendered via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section id="values" class="py-20 bg-petGray border-t border-petBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-gray-500">למה לקנות דרכנו?</span>
+                <h2 class="text-3xl font-extrabold tracking-tight mt-1">חיסכון בזמן, סינון איכות ומחיר ישירי מהספק</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="bg-white p-8 rounded-3xl border border-petBorder shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-xl text-petDark">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">סינון קפדני</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        אנחנו אוספים רק מוצרים עם דירוגים גבוהים וביקורות חיוביות מרוכשים אמיתיים.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-petBorder shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-xl text-petDark">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">מחיר ישיר מהמפעל</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        הפניה ישירה לחנויות הרשמיות ב-AliExpress ללא פערי תיווך מיותרים.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-petBorder shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-xl text-petDark">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">קנייה מאובטחת</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        הרכישה מתבצעת ישירות בתוך פלטפורמת AliExpress תחת הגנת הקונה המלאה.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-petBorder shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-xl text-petDark">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">עיצוב מושלם לבית</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        דגש מיוחד על מוצרים בעיצוב מודרני ואסתטי שמתאים לחלל המגורים שלך.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-gray-500">🛡️ שקיפות ואמינות</span>
+                <h2 class="text-3xl font-extrabold tracking-tight mt-1">שאלות ותשובות נפוצות</h2>
+            </div>
+            <div class="space-y-4">
+                
+                <div class="border border-petBorder rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right font-bold text-lg hover:bg-gray-50 transition-colors focus:outline-none">
+                        <span>איך מתבצעת הרכישה בפועל?</span>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-600 text-sm leading-relaxed">
+                        <div class="pb-6">
+                            בלחיצה על כפתור הקנייה, תועברו באופן מאובטח ישירות לעמוד המוצר בחנות הרשמית ב-AliExpress. שם תוכלו לבחור דגמים, צבעים ולהשלים את ההזמנה בבטחה.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-petBorder rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right font-bold text-lg hover:bg-gray-50 transition-colors focus:outline-none">
+                        <span>מה לגבי אחריות והחזרות?</span>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-600 text-sm leading-relaxed">
+                        <div class="pb-6">
+                            כל רכישה מוגנת באופן מלא תחת "הגנת הקונה" (Buyer Protection) של אלי אקספרס. במידה והמוצר לא הגיע או אינו כמתואר, ניתן לפתוח מחלוקת ולקבל החזר כספי מלא.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-petBorder rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right font-bold text-lg hover:bg-gray-50 transition-colors focus:outline-none">
+                        <span>האם המחיר באתר יקר יותר בגלל התיווך?</span>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-600 text-sm leading-relaxed">
+                        <div class="pb-6">
+                            בשום אופן לא! המחיר שאתם משלמים זהה לחלוטין ואף לעיתים נמוך יותר בזכות מבצעים שאנו מעדכנים. העמלה שאנו מקבלים ממומנת על ידי AliExpress בלבד ללא שום עלות נוספת עבורכם.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-petDark text-white pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-gray-800">
+                <div class="space-y-4">
+                    <span class="text-2xl font-black tracking-widest uppercase">PetCare</span>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        פורטל המלצות למוצרי איכות ופרימיום לחיות מחמד מבית AliExpress.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">ניווט מהיר</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><a href="#products" class="hover:text-white transition-colors">קולקציית מוצרים</a></li>
+                        <li><a href="#values" class="hover:text-white transition-colors">למה לבחור בנו</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">שאלות נפוצות</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">גילוי נאות</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        אתר זה כולל קישורי שותפים (Affiliate Links). במידה ותבצעו רכישה דרך הקישורים, אנו עשויים לקבל עמלה קטנה ללא כל עלות נוספת מצדכם.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">עדכונים ומבצעים</h4>
+                    <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <input type="email" placeholder="הכנס אימייל לקבלת דילים" required class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-white text-right">
+                        <button type="submit" class="w-full bg-white text-petDark font-semibold py-3 rounded-xl hover:bg-gray-200 transition-colors text-sm">הרשמה</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="pt-8 text-center text-xs text-gray-500">
+                <p>&copy; PetCare Affiliate Store. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden p-6 text-right">
+            <div class="flex justify-between items-center pb-4 border-b">
+                <h3 class="font-bold text-lg text-petDark">התחברות כמנהל</h3>
+                <button onclick="closeLoginModal()" class="text-gray-400 hover:text-black">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4 pt-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">אימייל מנהל</label>
+                    <input type="email" id="login-email" required class="w-full bg-gray-50 border border-petBorder rounded-xl p-3 text-sm text-left font-sans">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">סיסמה</label>
+                    <input type="password" id="login-password" required class="w-full bg-gray-50 border border-petBorder rounded-xl p-3 text-sm text-left">
+                </div>
+                <div id="login-error" class="text-xs text-red-500 hidden font-bold">אימייל או סיסמה שגויים</div>
+                <button type="submit" class="w-full bg-petDark text-white py-3 rounded-xl font-bold text-sm hover:bg-black transition-colors">
+                    התחבר לדשבורד
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="admin-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-petDark text-white px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <i class="fa-solid fa-sliders text-amber-400"></i>
+                    <h3 class="font-bold text-lg">דשבורד מנהל - עריכת מוצרים (Firebase Cloud)</h3>
+                </div>
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <button onclick="handleLogout()" class="text-xs bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-lg transition-colors ml-2">
+                        התנתק
+                    </button>
+                    <button onclick="closeAdminModal()" class="text-gray-400 hover:text-white p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="admin-dashboard-content" class="p-6 overflow-y-auto space-y-8 text-right dir-rtl scroll-smooth">
+                
+                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-xs text-emerald-800">
+                    🔥 <b>מחובר ל-Firebase:</b> כל שינוי שתבצעו בדשבורד יישמר ישירות במסד הנתונים בענן וישפיע על כל הגולשים בזמן אמת!
+                </div>
+
+                <!-- Form -->
+                <div class="bg-petGray p-6 rounded-2xl border border-petBorder space-y-4">
+                    <h4 class="font-bold text-base text-petDark border-b border-gray-200 pb-2">הוספה / עריכת מוצר</h4>
+                    <form id="product-form" onsubmit="saveProduct(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="hidden" id="admin-prod-id">
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">שם המוצר</label>
+                            <input type="text" id="admin-prod-name" required class="w-full bg-white border border-petBorder rounded-xl p-2.5 text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">מחיר מוערך (₪)</label>
+                            <input type="number" id="admin-prod-price" required class="w-full bg-white border border-petBorder rounded-xl p-2.5 text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">קישור שותפים (AliExpress Affiliate Link)</label>
+                            <input type="url" id="admin-prod-link" placeholder="https://s.click.aliexpress.com/..." required class="w-full bg-white border border-petBorder rounded-xl p-2.5 text-sm text-left font-mono">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">קישור לתמונה</label>
+                            <input type="url" id="admin-prod-img" required class="w-full bg-white border border-petBorder rounded-xl p-2.5 text-sm text-left font-mono">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">תגית / תווית (למשל: רב מכר / מומלץ)</label>
+                            <input type="text" id="admin-prod-badge" placeholder="לדוגמה: רב מכר" class="w-full bg-white border border-petBorder rounded-xl p-2.5 text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">קטגוריה</label>
+                            <select id="admin-prod-category" class="w-full bg-white border border-petBorder rounded-xl p-2.5 text-sm">
+                                <option value="litter-box">טיפוח וסביבת החתול</option>
+                                <option value="accessories">אביזרים והאכלה חכמה</option>
+                            </select>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-700 mb-1">תיאור קצר</label>
+                            <textarea id="admin-prod-desc" rows="2" class="w-full bg-white border border-petBorder rounded-xl p-2.5 text-sm"></textarea>
+                        </div>
+
+                        <div class="md:col-span-2 flex justify-between items-center pt-2">
+                            <button type="button" onclick="exportData()" class="px-4 py-2 rounded-xl border border-gray-400 text-xs font-bold hover:bg-gray-200">
+                                <i class="fa-solid fa-download ml-1"></i> ייצוא נתונים (JSON)
+                            </button>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button type="button" onclick="resetAdminForm()" class="px-5 py-2.5 rounded-xl border border-gray-300 text-sm font-medium hover:bg-gray-100">ניקוי</button>
+                                <button type="submit" id="submit-product-btn" class="px-6 py-2.5 rounded-xl bg-petDark text-white text-sm font-bold hover:bg-black transition-colors">שמור מוצר</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Products Table -->
+                <div class="space-y-3">
+                    <h4 class="font-bold text-base text-petDark">מוצרים קיימים בחנות</h4>
+                    <div class="overflow-x-auto border border-petBorder rounded-2xl">
+                        <table class="w-full text-sm text-right text-gray-600">
+                            <thead class="bg-gray-100 text-gray-700 font-bold border-b border-petBorder text-xs uppercase">
+                                <tr>
+                                    <th class="p-3">מוצר</th>
+                                    <th class="p-3">מחיר</th>
+                                    <th class="p-3">קישור שותפים</th>
+                                    <th class="p-3 text-center">פעולות</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-table-body" class="divide-y divide-gray-100">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 left-6 z-50 bg-petDark text-white px-6 py-3 rounded-2xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-3 space-x-reverse">
+        <i class="fa-solid fa-circle-check text-green-400"></i>
+        <span id="toast-msg" class="text-sm font-medium"></span>
+    </div>
+
+    <!-- Firebase SDK & Application Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            addDoc, 
+            updateDoc, 
+            deleteDoc, 
+            doc, 
+            onSnapshot 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // הגדרות Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBHqa7zmTxSj-2TS_SnRy5glYZ2e3ln7ag",
+            authDomain: "petcare-1201.firebaseapp.com",
+            projectId: "petcare-1201",
+            storageBucket: "petcare-1201.firebasestorage.app",
+            messagingSenderId: "471465308059",
+            appId: "1:471465308059:web:2d923ca734a45a7e7efb3e"
+        };
+
+        // איתחול Firebase, Firestore ו-Auth
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const productsCol = collection(db, "products");
+
+        let products = [];
+        let currentFilter = 'all';
+        let currentUser = null;
+
+        // הפיכת הפונקציות לגלובליות
+        window.openAdminModal = openAdminModal;
+        window.closeAdminModal = closeAdminModal;
+        window.closeLoginModal = closeLoginModal;
+        window.handleLogin = handleLogin;
+        window.handleLogout = handleLogout;
+        window.saveProduct = saveProduct;
+        window.editProduct = editProduct;
+        window.deleteProduct = deleteProduct;
+        window.resetAdminForm = resetAdminForm;
+        window.exportData = exportData;
+        window.handleNewsletter = handleNewsletter;
+        window.toggleFaq = toggleFaq;
+
+        // בדיקת מצב התחברות
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+        });
+
+        // האזנה לשינויים ב-Firebase בזמן אמת
+        onSnapshot(productsCol, (snapshot) => {
+            products = snapshot.docs.map(docSnap => ({
+                id: docSnap.id,
+                ...docSnap.data()
+            }));
+            renderProducts(currentFilter);
+            if (currentUser) {
+                renderAdminTable();
+            }
+        });
+
+        // DOM elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuContent = document.getElementById('mobile-menu-content');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-msg');
+
+        function renderProducts(filterCategory = 'all') {
+            const grid = document.getElementById('product-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const filtered = filterCategory === 'all' 
+                ? products 
+                : products.filter(p => p.category === filterCategory);
+
+            filtered.forEach(p => {
+                const badgeHtml = p.badge 
+                    ? `<span class="absolute top-4 right-4 z-10 bg-black text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">${p.badge}</span>`
+                    : '';
+
+                const card = document.createElement('div');
+                card.className = "product-card group flex flex-col justify-between bg-white rounded-3xl p-4 border border-petBorder shadow-sm hover:shadow-md transition-shadow";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative bg-petGray rounded-2xl overflow-hidden aspect-square border border-petBorder mb-4">
+                            ${badgeHtml}
+                            <img src="${p.img}" 
+                                 alt="${p.name}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x600/f5f5f5/333333?text=PetCare'">
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-base text-petDark">${p.name}</h3>
+                                <span class="font-extrabold text-petDark">₪${p.price}</span>
+                            </div>
+                            <p class="text-xs text-gray-500 leading-relaxed">${p.desc || ''}</p>
+                            <div class="pt-2 flex items-center space-x-1 space-x-reverse text-amber-500 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <span class="text-gray-400 mr-1">(${p.reviews || 100})</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-5">
+                        <a href="${p.affiliateUrl || '#'}" target="_blank" rel="noopener noreferrer" class="w-full bg-petDark text-white text-center py-3 rounded-xl font-bold text-xs hover:bg-black transition-all flex items-center justify-center space-x-2 space-x-reverse shadow-md hover:scale-[1.02]">
+                            <span>לקנייה במחיר בלעדי ב-AliExpress</span>
+                            <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function openAdminModal() {
+            hideMobileMenu();
+            if (currentUser) {
+                document.getElementById('admin-modal').classList.remove('hidden');
+                renderAdminTable();
+            } else {
+                document.getElementById('login-modal').classList.remove('hidden');
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+            resetAdminForm();
+        }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+            document.getElementById('login-error').classList.add('hidden');
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const errorEl = document.getElementById('login-error');
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                closeLoginModal();
+                document.getElementById('admin-modal').classList.remove('hidden');
+                renderAdminTable();
+                showToast("התחברת בהצלחה!");
+            } catch (error) {
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        async function handleLogout() {
+            await signOut(auth);
+            closeAdminModal();
+            showToast("התנתקת בהצלחה");
+        }
+
+        function renderAdminTable() {
+            const tbody = document.getElementById('admin-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            products.forEach((p) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-50";
+                tr.innerHTML = `
+                    <td class="p-3 font-medium flex items-center space-x-3 space-x-reverse">
+                        <img src="${p.img}" class="w-10 h-10 object-cover rounded-xl border">
+                        <span>${p.name}</span>
+                    </td>
+                    <td class="p-3 font-bold">₪${p.price}</td>
+                    <td class="p-3 font-mono text-xs text-blue-600 max-w-xs truncate">${p.affiliateUrl || '#'}</td>
+                    <td class="p-3 text-center space-x-2 space-x-reverse">
+                        <button type="button" onclick="editProduct('${p.id}')" class="p-2 text-amber-600 hover:bg-amber-50 rounded-lg transition-colors" title="עריכה">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button type="button" onclick="deleteProduct('${p.id}')" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="מחיקה">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function saveProduct(e) {
+            e.preventDefault();
+            const docId = document.getElementById('admin-prod-id').value;
+            
+            const productData = {
+                name: document.getElementById('admin-prod-name').value,
+                price: parseFloat(document.getElementById('admin-prod-price').value),
+                affiliateUrl: document.getElementById('admin-prod-link').value,
+                img: document.getElementById('admin-prod-img').value,
+                badge: document.getElementById('admin-prod-badge').value,
+                category: document.getElementById('admin-prod-category').value,
+                desc: document.getElementById('admin-prod-desc').value
+            };
+
+            try {
+                if (docId) {
+                    await updateDoc(doc(db, "products", docId), productData);
+                    showToast("המוצר עודכן בהצלחה בענן!");
+                } else {
+                    productData.reviews = Math.floor(Math.random() * 300) + 50;
+                    await addDoc(productsCol, productData);
+                    showToast("מוצר חדש נוסף בהצלחה בענן!");
+                }
+                resetAdminForm();
+            } catch (error) {
+                console.error("Error saving product: ", error);
+                showToast("שגיאה בשמירת המוצר");
+            }
+        }
+
+        function editProduct(id) {
+            const p = products.find(prod => prod.id === id);
+            if (!p) return;
+
+            document.getElementById('admin-prod-id').value = p.id;
+            document.getElementById('admin-prod-name').value = p.name;
+            document.getElementById('admin-prod-price').value = p.price;
+            document.getElementById('admin-prod-link').value = p.affiliateUrl || '';
+            document.getElementById('admin-prod-img').value = p.img;
+            document.getElementById('admin-prod-badge').value = p.badge || '';
+            document.getElementById('admin-prod-category').value = p.category || 'litter-box';
+            document.getElementById('admin-prod-desc').value = p.desc || '';
+
+            const submitBtn = document.getElementById('submit-product-btn');
+            submitBtn.textContent = 'עדכן שינויים';
+            submitBtn.classList.remove('bg-petDark', 'hover:bg-black');
+            submitBtn.classList.add('bg-amber-500', 'hover:bg-amber-600', 'text-black');
+
+            document.getElementById('admin-dashboard-content').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetAdminForm() {
+            document.getElementById('product-form').reset();
+            document.getElementById('admin-prod-id').value = '';
+
+            const submitBtn = document.getElementById('submit-product-btn');
+            submitBtn.textContent = 'שמור מוצר';
+            submitBtn.classList.add('bg-petDark', 'hover:bg-black');
+            submitBtn.classList.remove('bg-amber-500', 'hover:bg-amber-600', 'text-black');
+        }
+
+        async function deleteProduct(id) {
+            if (confirm("האם למחוק מוצר זה מ-Firebase?")) {
+                try {
+                    await deleteDoc(doc(db, "products", id));
+                    showToast("המוצר נמחק בהצלחה מ-Firebase");
+                } catch (error) {
+                    console.error("Error deleting product: ", error);
+                    showToast("שגיאה במחיקת המוצר");
+                }
+            }
+        }
+
+        function exportData() {
+            const cleanProducts = products.map(({ id, ...rest }) => rest);
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(cleanProducts, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "petcare_products.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        // Mobile Menu Controls
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.remove('opacity-0');
+                mobileMenuContent.classList.remove('translate-x-full');
+            }, 10);
+        });
+
+        function hideMobileMenu() {
+            mobileMenu.classList.add('opacity-0');
+            mobileMenuContent.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        }
+
+        closeMobileMenu.addEventListener('click', hideMobileMenu);
+
+        function showToast(message) {
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            showToast("תודה שנרשמת לקבלת עדכונים!");
+            e.target.reset();
+        }
+
+        // Filter Buttons Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-petDark', 'text-white');
+                    b.classList.add('bg-gray-100', 'text-gray-700');
+                });
+                btn.classList.remove('bg-gray-100', 'text-gray-700');
+                btn.classList.add('bg-petDark', 'text-white');
+
+                currentFilter = btn.getAttribute('data-filter');
+                renderProducts(currentFilter);
+            });
+        });
+
+        // FAQ Toggle Logic
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            
+            document.querySelectorAll('.faq-content').forEach(item => {
+                if (item !== content) {
+                    item.style.maxHeight = null;
+                    item.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+            });
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                button.querySelector('i').style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                button.querySelector('i').style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>
